@@ -246,6 +246,9 @@
             font-size: 1.1em;
             margin: 15px 0;
             color: #555;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .contact-info p:first-child {
@@ -257,10 +260,9 @@
         }
 
         .contact-label {
-            font-weight: 600;
-            color: #999;
-            display: inline-block;
-            min-width: 100px;
+            color: #e85d3c;
+            font-size: 1.2em;
+            min-width: 20px;
         }
 
         .contact-info a {
@@ -421,9 +423,18 @@
                     <h3>Ready to streamline your practice?</h3>
                     <p>We'd love to hear from you and discuss how we can help your practice thrive.</p>
                     <div class="contact-info">
-                        <p><span class="contact-label">Email:</span> <a href="mailto:kelsie@daylightbc.com">kelsie@daylightbc.com</a></p>
-                        <p><span class="contact-label">Phone:</span> <a href="tel:+18013187293">(801) 318-7293</a></p>
-                        <p><span class="contact-label">Location:</span> Layton, Utah</p>
+                        <p>
+                            <i class="fa-solid fa-envelope contact-label"></i>
+                            <a href="mailto:kelsie@daylightbc.com">kelsie@daylightbc.com</a>
+                        </p>
+                        <p>
+                            <i class="fa-solid fa-phone contact-label"></i>
+                            <a href="tel:+18013187293">(801) 318-7293</a>
+                        </p>
+                        <p>
+                            <i class="fa-solid fa-location-dot contact-label"></i>
+                            <span>Layton, Utah</span>
+                        </p>
                     </div>
                 </div>
             </div>
