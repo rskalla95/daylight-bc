@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daylight Billing & Consulting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #f5f1e8;
+            color: #2d3748;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 400px;
+            align-items: center;
+        }
+
+        .hero-content {
+            padding: 60px 60px;
+            text-align: left;
+        }
+
+        .hero-image {
+            height: 100%;
+            min-height: 400px;
+            background: linear-gradient(135deg, rgba(255, 154, 118, 0.7) 0%, rgba(255, 184, 140, 0.6) 50%, rgba(255, 212, 163, 0.5) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect fill="%23f5f1e8" width="800" height="600"/><circle cx="400" cy="200" r="120" fill="%23ff9a76" opacity="0.3"/><circle cx="400" cy="200" r="90" fill="%23ffb88c" opacity="0.4"/><circle cx="400" cy="200" r="60" fill="%23ffd4a3" opacity="0.5"/><path d="M 100 400 Q 250 350 400 400 T 700 400 L 700 600 L 100 600 Z" fill="%23e8dcc8" opacity="0.6"/><path d="M 150 450 Q 300 420 450 450 T 750 450 L 750 600 L 150 600 Z" fill="%23d4c5b0" opacity="0.4"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .business-name {
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .business-name .daylight {
+            color: #e85d3c;
+            display: block;
+            font-size: 3.2em;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .business-name .billing {
+            color: #666;
+            font-weight: 300;
+            font-size: 1.5em;
+            display: block;
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .ampersand {
+            color: #ffb88c;
+            font-weight: 400;
+        }
+
+        header p {
+            font-size: 1.2em;
+            max-width: 500px;
+            margin: 0;
+            color: #666;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+        }
+
+        section:nth-child(even) {
+            background: #fef9f5;
+        }
+
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8em;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #e85d3c;
+            font-weight: 600;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #ff9a76 0%, #ffb88c 50%, #ffd4a3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-card h3 {
+            font-family: 'Poppins', sans-serif;
+            color: #e85d3c;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-weight: 600;
+            min-height: 2.4em;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, #ffd5cd 0%, #ffb3d9 30%, #b5a5de 70%, #89b5e0 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1em;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .about-text h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: #e85d3c;
+            font-weight: 600;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Contact */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, rgba(232, 93, 60, 0.1) 0%, rgba(255, 184, 140, 0.15) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5em;
+        }
+
+        .contact-text {
+            text-align: left;
+        }
+
+        .contact-text h3 {
+            font-size: 2em;
+            color: #e85d3c;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .contact-text > p {
+            margin-bottom: 30px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            border: 1px solid rgba(232, 93, 60, 0.15);
+        }
+
+        .contact-info p {
+            font-size: 1.1em;
+            margin: 15px 0;
+            color: #555;
+        }
+
+        .contact-info p:first-child {
+            margin-top: 0;
+        }
+
+        .contact-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: #999;
+            display: inline-block;
+            min-width: 100px;
+        }
+
+        .contact-info a {
+            color: #e85d3c;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #ff9a76;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #e85d3c;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                min-height: 300px;
+                order: -1;
+            }
+
+            .hero-content {
+                padding: 60px 30px;
+            }
+
+            .business-name .daylight {
+                font-size: 2.5em;
+            }
+
+            .business-name .billing {
+                font-size: 1.2em;
+            }
+
+            header p {
+                font-size: 1.1em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-image {
+                min-height: 250px;
+            }
+
+            .contact-text {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="business-name">
+                    <span class="daylight">Daylight</span>
+                    <span class="billing">Billing <span class="ampersand">&</span> Consulting</span>
+                </h1>
+                <p>Expert billing solutions and financial consulting for mental health providers</p>
+            </div>
+            <div class="hero-image"></div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">📋</div>
+                    <div class="service-content">
+                        <h3>Insurance Billing</h3>
+                        <p>Comprehensive insurance billing services tailored for mental health providers. We handle claims submission, follow-ups, and ensure maximum reimbursement for your practice.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">📈</div>
+                    <div class="service-content">
+                        <h3>Financial Consulting</h3>
+                        <p>Strategic financial guidance to help your practice thrive. From budgeting to revenue optimization, we provide the insights you need to make informed decisions.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">⚙️</div>
+                    <div class="service-content">
+                        <h3>Admin Support</h3>
+                        <p>Streamline your practice operations with our administrative services. We help you focus on patient care while we handle the administrative complexities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">[Your photo here]</div>
+                <div class="about-text">
+                    <h3>Meet Kelsie & Brad Skalla</h3>
+                    <p>
+                        Kelsie founded Daylight Billing & Consulting in 2023 with a vision to help mental health providers spend less time on paperwork and more time doing what they love—caring for their patients. Recently, Brad joined the team to help grow the business and bring his financial expertise to support our clients even better.
+                    </p>
+                    <p>
+                        With Brad's MBA from Utah State University and Kelsie's deep understanding of the unique challenges mental health providers face, together they're building a service that truly understands your needs. Whether it's navigating insurance complexities or optimizing your practice's financial health, they're here to help you thrive.
+                    </p>
+                    <p>
+                        When they're not helping practices succeed, you'll find them in Layton, Utah with their two kids. Kelsie's a proud Swiftie who never says no to ice cream, while Brad enjoys hitting the golf course, watching football, and exploring investment opportunities. They bring that same care and attention to detail to every client relationship.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-image">☀️</div>
+                <div class="contact-text">
+                    <h3>Ready to streamline your practice?</h3>
+                    <p>We'd love to hear from you and discuss how we can help your practice thrive.</p>
+                    <div class="contact-info">
+                        <p><span class="contact-label">Email:</span> <a href="mailto:kelsie@daylightbc.com">kelsie@daylightbc.com</a></p>
+                        <p><span class="contact-label">Phone:</span> <a href="tel:+18013187293">(801) 318-7293</a></p>
+                        <p><span class="contact-label">Location:</span> Layton, Utah</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Daylight Billing & Consulting. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
