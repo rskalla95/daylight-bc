@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -136,20 +137,12 @@
         .service-image {
             width: 100%;
             height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .service-image.billing {
-            background-image: url('billing-image.jpg');
-        }
-
-        .service-image.financial {
-            background-image: url('financial-image.jpg');
-        }
-
-        .service-image.admin {
-            background-image: url('admin-image.jpg');
+            background: linear-gradient(135deg, #ff9a76 0%, #ffb88c 50%, #ffd4a3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4em;
         }
 
         .service-content {
@@ -368,21 +361,27 @@
         <div class="container">
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-image billing"></div>
+                    <div class="service-image">
+                        <i class="fa-solid fa-file-invoice"></i>
+                    </div>
                     <div class="service-content">
                         <h3>Insurance Billing</h3>
                         <p>Comprehensive insurance billing services tailored for mental health providers. We handle claims submission, follow-ups, and ensure maximum reimbursement for your practice.</p>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-image financial"></div>
+                    <div class="service-image">
+                        <i class="fa-solid fa-money-bill"></i>
+                    </div>
                     <div class="service-content">
                         <h3>Financial Consulting</h3>
                         <p>Strategic financial guidance to help your practice thrive. From budgeting to revenue optimization, we provide the insights you need to make informed decisions.</p>
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-image admin"></div>
+                    <div class="service-image">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
                     <div class="service-content">
                         <h3>Admin Support</h3>
                         <p>Streamline your practice operations with our administrative services. We help you focus on patient care while we handle the administrative complexities.</p>
