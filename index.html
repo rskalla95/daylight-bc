@@ -6,7 +6,7 @@
     <title>Daylight Billing & Consulting</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
@@ -133,6 +133,17 @@
             line-height: 1.7;
         }
 
+        .easter-egg {
+            color: inherit;
+            text-decoration: none;
+            cursor: default;
+            transition: color 0.3s ease;
+        }
+
+        .easter-egg:hover {
+            color: #eaadd6;
+        }
+
         /* Services */
         .services-grid {
             display: grid;
@@ -157,27 +168,45 @@
 
         .service-image {
             width: 100%;
-            height: 100px;
+            height: 140px;
             background: linear-gradient(135deg, #ff9a76 0%, #ffb88c 50%, #ffd4a3 100%);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             color: white;
+            gap: 10px;
+        }
+
+        .service-image i {
             font-size: 2.5em;
+        }
+
+        .service-image h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.6em;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin: 0;
+            color: white;
+            text-transform: uppercase;
         }
 
         .service-content {
             padding: 25px;
         }
 
+        .service-content h3 {
+            display: none;
+        }
+
         .service-card h3 {
             font-family: 'Oswald', sans-serif;
-            color: #e85d3c;
-            font-size: 1.8em;
-            margin-bottom: 15px;
+            color: white;
+            font-size: 1.5em;
             font-weight: 300;
-            min-height: auto;
             letter-spacing: 1px;
+            margin: 0;
         }
 
         .service-card p {
@@ -463,9 +492,9 @@
                 <div class="service-card">
                     <div class="service-image">
                         <i class="fa-solid fa-money-bill"></i>
+                        <h3>Behavioral Health Billing</h3>
                     </div>
                     <div class="service-content">
-                        <h3>Behavioral Health Billing</h3>
                         <ul>
                             <li>Comprehensive insurance billing tailored for mental health providers</li>
                             <li>Accurate claims submission and timely follow-ups</li>
@@ -479,9 +508,9 @@
                 <div class="service-card">
                     <div class="service-image">
                         <i class="fa-solid fa-chart-line"></i>
+                        <h3>Financial Consulting</h3>
                     </div>
                     <div class="service-content">
-                        <h3>Financial Consulting</h3>
                         <ul>
                             <li>Strategic budgeting and revenue optimization</li>
                             <li>Cash flow management and analysis</li>
@@ -495,9 +524,9 @@
                 <div class="service-card">
                     <div class="service-image">
                         <i class="fa-solid fa-file-invoice"></i>
+                        <h3>Credentialing</h3>
                     </div>
                     <div class="service-content">
-                        <h3>Credentialing</h3>
                         <ul>
                             <li>Credential renewal tracking and reminders</li>
                             <li>New application initiation and processing</li>
@@ -573,7 +602,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Daylight Billing & Consulting. All rights reserved.</p>
+            <p>&copy; 2025 <a href="https://www.youtube.com/watch?v=u9raS7-NisU&list=RDu9raS7-NisU" target="_blank" class="easter-egg">Daylight</a> Billing & Consulting. All rights reserved.</p>
         </div>
     </footer>
 </body>
