@@ -31,67 +31,66 @@
         header {
             background: #f5f1e8;
             color: #2d3748;
-            padding: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 400px;
-            align-items: center;
+            padding: 40px 20px;
+            text-align: center;
         }
 
         .hero-content {
-            padding: 60px 60px;
-            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .hero-image {
-            height: 100%;
-            min-height: 400px;
-            background: linear-gradient(135deg, rgba(255, 154, 118, 0.7) 0%, rgba(255, 184, 140, 0.6) 50%, rgba(255, 212, 163, 0.5) 100%),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect fill="%23f5f1e8" width="800" height="600"/><circle cx="400" cy="200" r="120" fill="%23ff9a76" opacity="0.3"/><circle cx="400" cy="200" r="90" fill="%23ffb88c" opacity="0.4"/><circle cx="400" cy="200" r="60" fill="%23ffd4a3" opacity="0.5"/><path d="M 100 400 Q 250 350 400 400 T 700 400 L 700 600 L 100 600 Z" fill="%23e8dcc8" opacity="0.6"/><path d="M 150 450 Q 300 420 450 450 T 750 450 L 750 600 L 150 600 Z" fill="%23d4c5b0" opacity="0.4"/></svg>');
-            background-size: cover;
-            background-position: center;
+        .logo-image {
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px;
         }
 
-        .business-name {
-            font-family: 'Poppins', sans-serif;
-            margin-bottom: 20px;
-            line-height: 1.1;
+        .tagline {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 35px;
+            line-height: 1.6;
         }
 
-        .business-name .daylight {
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 1em;
+        }
+
+        .cta-primary {
+            background: #e85d3c;
+            color: white;
+        }
+
+        .cta-primary:hover {
+            background: #d44d2c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(232, 93, 60, 0.3);
+        }
+
+        .cta-secondary {
+            background: white;
             color: #e85d3c;
-            display: block;
-            font-size: 3.2em;
-            font-weight: 700;
-            letter-spacing: -1px;
+            border: 2px solid #e85d3c;
         }
 
-        .business-name .billing {
-            color: #666;
-            font-weight: 300;
-            font-size: 1.5em;
-            display: block;
-            margin-top: 5px;
-            letter-spacing: 0.5px;
-        }
-
-        .ampersand {
-            color: #ffb88c;
-            font-weight: 400;
-        }
-
-        header p {
-            font-size: 1.2em;
-            max-width: 500px;
-            margin: 0;
-            color: #666;
-            font-weight: 400;
-            line-height: 1.8;
+        .cta-secondary:hover {
+            background: #e85d3c;
+            color: white;
+            transform: translateY(-2px);
         }
 
         /* Sections */
@@ -198,6 +197,42 @@
             line-height: 1.8;
         }
 
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 40px auto 0;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            border-left: 4px solid #e85d3c;
+        }
+
+        .testimonial-text {
+            color: #555;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #e85d3c;
+            font-style: normal;
+        }
+
+        .testimonial-role {
+            color: #999;
+            font-size: 0.9em;
+            font-style: normal;
+        }
+
         /* Contact */
         .contact-content {
             display: grid;
@@ -291,21 +326,21 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-image {
-                min-height: 300px;
-                order: -1;
-            }
-
-            .hero-content {
-                padding: 60px 30px;
-                justify-content: center;
-            }
-
             .logo-image {
+                max-width: 280px;
+            }
+
+            .tagline {
+                font-size: 1.1em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button {
+                width: 100%;
                 max-width: 300px;
             }
 
@@ -319,6 +354,10 @@
             }
 
             .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -339,11 +378,13 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="hero-container">
-            <div class="hero-content">
-                <img src="daylight-logo.png" alt="Daylight Billing & Consulting" class="logo-image">
+        <div class="hero-content">
+            <img src="daylight-logo.png" alt="Daylight Billing & Consulting" class="logo-image">
+            <p class="tagline">Expert billing solutions and financial consulting for mental health providers</p>
+            <div class="cta-buttons">
+                <a href="#services" class="cta-button cta-primary">Our Services</a>
+                <a href="#contact" class="cta-button cta-secondary">Get In Touch</a>
             </div>
-            <div class="hero-image"></div>
         </div>
     </header>
 
@@ -395,9 +436,20 @@
                     <p>
                         With Brad's MBA from Utah State University and Kelsie's deep understanding of the unique challenges mental health providers face, together they're building a service that truly understands your needs. Whether it's navigating insurance complexities or optimizing your practice's financial health, they're here to help you thrive.
                     </p>
-                    <p>
-                        When they're not helping practices succeed, you'll find them in Layton, Utah with their two kids. Kelsie's a proud Swiftie who never says no to ice cream, while Brad enjoys hitting the golf course, watching football, and exploring investment opportunities. They bring that same care and attention to detail to every client relationship.
-                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Business Coaches tell you to make every hour profitable, Daylight Billing made that a reality for my practice. Their credentialing, billing and financial analysis services have ensured steady cash flow and have given me an accurate picture of where my business is at all times. Daylight Billing allows me to focus on the people in my practice and to keep a work life balance that makes it easy to give my best to both my family and my career."</p>
+                    <p class="testimonial-author">Dr. Amy Fehlberg, PhD</p>
+                    <p class="testimonial-role">Shoreline Psychology</p>
                 </div>
             </div>
         </div>
