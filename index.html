@@ -6,7 +6,7 @@
     <title>Daylight Billing & Consulting</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
@@ -35,71 +35,53 @@
         header {
             background: #f5f1e8;
             color: #2d3748;
-            padding: 60px 20px;
+            padding: 25px 20px;
         }
 
         .hero-content {
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
         .hero-left {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
         }
 
         .logo-image {
-            max-width: 380px;
+            max-width: 280px;
             width: 100%;
             height: auto;
-            margin-bottom: 25px;
         }
 
         .tagline {
-            font-size: 1.15em;
-            color: #666;
-            margin-bottom: 30px;
-            line-height: 1.6;
-            text-align: left;
+            display: none;
         }
 
         .hero-right {
             display: flex;
             align-items: center;
-            justify-content: center;
         }
 
         .hero-visual {
-            width: 100%;
-            max-width: 400px;
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, rgba(255, 154, 118, 0.2) 0%, rgba(255, 184, 140, 0.15) 50%, rgba(255, 212, 163, 0.1) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8em;
-            color: rgba(232, 93, 60, 0.3);
+            display: none;
         }
 
         .cta-buttons {
             display: flex;
             gap: 15px;
-            flex-wrap: wrap;
         }
 
         .cta-button {
-            padding: 14px 32px;
+            padding: 12px 28px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
-            font-size: 1em;
+            font-size: 0.95em;
         }
 
         .cta-primary {
@@ -135,12 +117,13 @@
         }
 
         h2 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.8em;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.2em;
             margin-bottom: 40px;
             text-align: center;
             color: #e85d3c;
-            font-weight: 600;
+            font-weight: 400;
+            letter-spacing: 2px;
         }
 
         /* Services */
@@ -181,14 +164,15 @@
         }
 
         .service-card h3 {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Bebas Neue', sans-serif;
             color: #e85d3c;
-            font-size: 1.8em;
+            font-size: 2em;
             margin-bottom: 15px;
-            font-weight: 600;
+            font-weight: 400;
             min-height: 2.4em;
             display: flex;
             align-items: center;
+            letter-spacing: 1px;
         }
 
         .service-card p {
@@ -216,11 +200,12 @@
         }
 
         .about-text h3 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2.2em;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5em;
             margin-bottom: 20px;
             color: #e85d3c;
-            font-weight: 600;
+            font-weight: 400;
+            letter-spacing: 1px;
         }
 
         .about-text p {
@@ -289,10 +274,12 @@
         }
 
         .contact-text h3 {
-            font-size: 2em;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.3em;
             color: #e85d3c;
             margin-bottom: 15px;
-            font-weight: 600;
+            font-weight: 400;
+            letter-spacing: 1px;
         }
 
         .contact-text > p {
@@ -359,33 +346,26 @@
         /* Responsive */
         @media (max-width: 768px) {
             header {
-                padding: 40px 20px;
+                padding: 20px;
             }
 
             .hero-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .hero-left {
-                align-items: center;
-                text-align: center;
-            }
-
-            .tagline {
-                text-align: center;
+                flex-direction: column;
+                gap: 20px;
             }
 
             .logo-image {
-                max-width: 300px;
-            }
-
-            .hero-right {
-                display: none;
+                max-width: 220px;
             }
 
             .cta-buttons {
-                justify-content: center;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .cta-button {
+                width: 100%;
+                text-align: center;
             }
 
             .cta-buttons {
@@ -435,14 +415,12 @@
         <div class="hero-content">
             <div class="hero-left">
                 <img src="daylight-logo.png" alt="Daylight Billing & Consulting" class="logo-image">
-                <p class="tagline">Expert billing solutions and financial consulting for mental health providers</p>
+            </div>
+            <div class="hero-right">
                 <div class="cta-buttons">
                     <a href="#services" class="cta-button cta-primary">Our Services</a>
                     <a href="#contact" class="cta-button cta-secondary">Get In Touch</a>
                 </div>
-            </div>
-            <div class="hero-right">
-                <div class="hero-visual">☀️</div>
             </div>
         </div>
     </header>
@@ -466,7 +444,7 @@
                     </div>
                     <div class="service-content">
                         <h3>Financial Consulting</h3>
-                        <p>Strategic financial guidance to help your practice thrive. From budgeting to revenue optimization, we provide the insights you need to make informed decisions.</p>
+                        <p>We provide strategic financial consulting to help your practice thrive. From budgeting and revenue optimization to cash flow management, we deliver the insights you need to make informed decisions. Our services include tailored financial analysis, detailed reporting, and forecasting to identify growth opportunities and improve profitability. We also support day-to-day financial operations with bookkeeping, expense tracking, and financial organization, giving you a clear and consistent picture of your practice's financial health.</p>
                     </div>
                 </div>
                 <div class="service-card">
@@ -474,8 +452,8 @@
                         <i class="fa-solid fa-gear"></i>
                     </div>
                     <div class="service-content">
-                        <h3>Admin Support</h3>
-                        <p>Streamline your practice operations with our administrative services. We help you focus on patient care while we handle the administrative complexities.</p>
+                        <h3>Credentialing Services</h3>
+                        <p>We offer credentialing services for mental health providers, including tracking renewals, initiating new applications, and negotiating higher reimbursement rates when applicable. We manage the entire credentialing process from start to finish, ensuring accuracy, compliance, and timely approvals with insurance payers.</p>
                     </div>
                 </div>
             </div>
