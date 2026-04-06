@@ -35,7 +35,8 @@
         header {
             background: #f5f1e8;
             color: #2d3748;
-            padding: 25px 20px;
+            padding: 20px 20px;
+            border-bottom: 1px solid rgba(232, 93, 60, 0.1);
         }
 
         .hero-content {
@@ -52,7 +53,7 @@
         }
 
         .logo-image {
-            max-width: 240px;
+            max-width: 200px;
             width: 100%;
             height: auto;
         }
@@ -70,44 +71,38 @@
             display: none;
         }
 
-        .cta-buttons {
+        .nav-links {
             display: flex;
-            gap: 15px;
+            gap: 35px;
+            list-style: none;
         }
 
-        .cta-button {
-            padding: 12px 28px;
-            border-radius: 8px;
+        .nav-links a {
+            color: #666;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
-            font-size: 0.95em;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 1em;
+            transition: color 0.3s ease;
+            position: relative;
         }
 
-        .cta-primary {
-            background: #e85d3c;
-            color: white;
-        }
-
-        .cta-primary:hover {
-            background: #d44d2c;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(232, 93, 60, 0.3);
-        }
-
-        .cta-secondary {
-            background: white;
+        .nav-links a:hover {
             color: #e85d3c;
-            border: 2px solid #e85d3c;
         }
 
-        .cta-secondary:hover {
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
             background: #e85d3c;
-            color: white;
-            transform: translateY(-2px);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         /* Sections */
@@ -358,7 +353,7 @@
         /* Responsive */
         @media (max-width: 768px) {
             header {
-                padding: 20px;
+                padding: 15px 20px;
             }
 
             .hero-content {
@@ -367,17 +362,12 @@
             }
 
             .logo-image {
-                max-width: 220px;
+                max-width: 180px;
             }
 
-            .cta-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .cta-button {
-                width: 100%;
-                text-align: center;
+            .nav-links {
+                gap: 20px;
+                font-size: 0.9em;
             }
 
             .cta-buttons {
@@ -429,12 +419,14 @@
                 <img src="daylight-logo.png" alt="Daylight Billing & Consulting" class="logo-image">
             </div>
             <div class="hero-right">
-                <div class="cta-buttons">
-                    <a href="#contact" class="cta-button cta-primary">
-                        <i class="fa-solid fa-phone"></i>
-                        Get In Touch
-                    </a>
-                </div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>
@@ -447,7 +439,7 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-image">
-                        <i class="fa-solid fa-file-invoice"></i>
+                        <i class="fa-solid fa-money-bill"></i>
                     </div>
                     <div class="service-content">
                         <h3>Behavioral Health Billing</h3>
@@ -456,7 +448,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-image">
-                        <i class="fa-solid fa-money-bill"></i>
+                        <i class="fa-solid fa-chart-line"></i>
                     </div>
                     <div class="service-content">
                         <h3>Financial Consulting</h3>
@@ -465,7 +457,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-image">
-                        <i class="fa-solid fa-circle-check"></i>
+                        <i class="fa-solid fa-file-invoice"></i>
                     </div>
                     <div class="service-content">
                         <h3>Credentialing</h3>
@@ -527,10 +519,6 @@
                         <p>
                             <i class="fa-solid fa-phone contact-label"></i>
                             <a href="tel:+18013187293">(801) 318-7293</a>
-                        </p>
-                        <p>
-                            <i class="fa-solid fa-location-dot contact-label"></i>
-                            <span>Layton, Utah</span>
                         </p>
                     </div>
                 </div>
