@@ -276,13 +276,21 @@
             line-height: 1.8;
         }
 
-        /* Testimonials */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
+        /* Testimonials Carousel */
+        .carousel-wrapper {
+            max-width: 950px;
             margin: 40px auto 0;
+            position: relative;
+        }
+
+        .carousel-track-container {
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
         }
 
         .testimonial-card {
@@ -291,6 +299,8 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
             border-left: 4px solid #e85d3c;
+            min-width: 100%;
+            box-sizing: border-box;
         }
 
         .testimonial-text {
@@ -310,6 +320,61 @@
             color: #999;
             font-size: 0.9em;
             font-style: normal;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 1.1em;
+            color: #e85d3c;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, color 0.2s;
+            z-index: 1;
+        }
+
+        .carousel-btn:hover {
+            background: #e85d3c;
+            color: white;
+        }
+
+        .carousel-btn-prev {
+            left: -22px;
+        }
+
+        .carousel-btn-next {
+            right: -22px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ddd;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.2s;
+        }
+
+        .carousel-dot.active {
+            background: #e85d3c;
         }
 
         /* Contact */
@@ -450,8 +515,12 @@
                 grid-template-columns: 1fr;
             }
 
-            .testimonials-grid {
-                grid-template-columns: 1fr;
+            .carousel-btn-prev {
+                left: -10px;
+            }
+
+            .carousel-btn-next {
+                right: -10px;
             }
 
             .contact-content {
@@ -571,11 +640,36 @@
     <section id="testimonials">
         <div class="container">
             <h2>What Our Clients Say</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Business Coaches tell you to make every hour profitable, Daylight BC made that a reality for my practice. Their credentialing, billing and financial analysis services have ensured steady cash flow and have given me an accurate picture of where my business is at all times. Daylight BC allows me to focus on the people in my practice and to keep a work life balance that makes it easy to give my best to both my family and my career."</p>
-                    <p class="testimonial-author">Dr. Amy Fehlberg, PhD</p>
-                    <p class="testimonial-role">Shoreline Psychology</p>
+            <div class="carousel-wrapper">
+                <button class="carousel-btn carousel-btn-prev" aria-label="Previous testimonial">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <div class="carousel-track-container">
+                    <div class="carousel-track">
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"Business Coaches tell you to make every hour profitable, Daylight BC made that a reality for my practice. Their credentialing, billing and financial analysis services have ensured steady cash flow and have given me an accurate picture of where my business is at all times. Daylight BC allows me to focus on the people in my practice and to keep a work life balance that makes it easy to give my best to both my family and my career."</p>
+                            <p class="testimonial-author">Dr. Amy Fehlberg, PhD</p>
+                            <p class="testimonial-role">Shoreline Psychology</p>
+                        </div>
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"There's no way my practice would be as successful as it is today without Kelsie Skalla and Daylight Billing & Consulting! Daylight took insurance credentialing, often a stressful, and complicated process and made it smooth and easy. Kelsie really knows the ins and outs of the industry, understands the quirks of each insurance company, and gets everything done quickly and accurately. I honestly can't recommend Daylight enough!"</p>
+                            <p class="testimonial-author">Liz McCooey, LCSW</p>
+                            <p class="testimonial-role">Lizard Wellness</p>
+                        </div>
+                        <div class="testimonial-card">
+                            <p class="testimonial-text">"Competence. Consistency. Compassion. Kelsie and Daylight Billing and Consulting are there for me, allowing me to see more therapy clients, knowing they expertly handle the other pieces of private practice. Kelsie and Daylight have gone to bat for me countless times, taking care of vital details of this work for which they have experience and knowledge that far exceeds my own. They act with a firm but kind and respectful hand in all their interactions. I know I am in good hands and so grateful for all they do to keep my practice successful."</p>
+                            <p class="testimonial-author">Lisa</p>
+                            <p class="testimonial-role">Private Practice</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn carousel-btn-next" aria-label="Next testimonial">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                <div class="carousel-dots">
+                    <button class="carousel-dot active" aria-label="Go to testimonial 1"></button>
+                    <button class="carousel-dot" aria-label="Go to testimonial 2"></button>
+                    <button class="carousel-dot" aria-label="Go to testimonial 3"></button>
                 </div>
             </div>
         </div>
@@ -603,6 +697,35 @@
             </div>
         </div>
     </section>
+
+    <script>
+        (function () {
+            const track = document.querySelector('.carousel-track');
+            const cards = document.querySelectorAll('.testimonial-card');
+            const dots = document.querySelectorAll('.carousel-dot');
+            const prevBtn = document.querySelector('.carousel-btn-prev');
+            const nextBtn = document.querySelector('.carousel-btn-next');
+            let current = 0;
+            let autoPlay;
+
+            function goTo(index) {
+                current = (index + cards.length) % cards.length;
+                track.style.transform = 'translateX(-' + (current * 100) + '%)';
+                dots.forEach((d, i) => d.classList.toggle('active', i === current));
+            }
+
+            prevBtn.addEventListener('click', () => { goTo(current - 1); resetAutoPlay(); });
+            nextBtn.addEventListener('click', () => { goTo(current + 1); resetAutoPlay(); });
+            dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetAutoPlay(); }));
+
+            function resetAutoPlay() {
+                clearInterval(autoPlay);
+                autoPlay = setInterval(() => goTo(current + 1), 5000);
+            }
+
+            resetAutoPlay();
+        })();
+    </script>
 
     <!-- Footer -->
     <footer>
