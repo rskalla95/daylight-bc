@@ -284,23 +284,32 @@
         }
 
         .carousel-track-container {
-            overflow: hidden;
             border-radius: 10px;
+            overflow: hidden;
         }
 
         .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease;
+            display: grid;
         }
 
         .testimonial-card {
+            grid-area: 1 / 1;
             background: white;
             padding: 35px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
             border-left: 4px solid #e85d3c;
-            min-width: 100%;
             box-sizing: border-box;
+            opacity: 0;
+            transform: translateX(100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .testimonial-card.active {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .testimonial-text {
@@ -355,27 +364,6 @@
             right: -22px;
         }
 
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
-        }
-
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ddd;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            transition: background 0.2s;
-        }
-
-        .carousel-dot.active {
-            background: #e85d3c;
-        }
 
         /* Contact */
         .contact-content {
@@ -666,11 +654,6 @@
                 <button class="carousel-btn carousel-btn-next" aria-label="Next testimonial">
                     <i class="fa-solid fa-chevron-right"></i>
                 </button>
-                <div class="carousel-dots">
-                    <button class="carousel-dot active" aria-label="Go to testimonial 1"></button>
-                    <button class="carousel-dot" aria-label="Go to testimonial 2"></button>
-                    <button class="carousel-dot" aria-label="Go to testimonial 3"></button>
-                </div>
             </div>
         </div>
     </section>
@@ -700,27 +683,64 @@
 
     <script>
         (function () {
-            const track = document.querySelector('.carousel-track');
-            const cards = document.querySelectorAll('.testimonial-card');
-            const dots = document.querySelectorAll('.carousel-dot');
+            const cards = Array.from(document.querySelectorAll('.testimonial-card'));
+            const total = cards.length;
             const prevBtn = document.querySelector('.carousel-btn-prev');
             const nextBtn = document.querySelector('.carousel-btn-next');
             let current = 0;
+            let transitioning = false;
             let autoPlay;
 
-            function goTo(index) {
-                current = (index + cards.length) % cards.length;
-                track.style.transform = 'translateX(-' + (current * 100) + '%)';
-                dots.forEach((d, i) => d.classList.toggle('active', i === current));
+            // Show first card immediately (no animation)
+            cards[0].style.transition = 'none';
+            cards[0].classList.add('active');
+
+            function goTo(next, direction) {
+                if (transitioning) return;
+                transitioning = true;
+
+                const outgoing = cards[current];
+                const incoming = cards[next];
+
+                // Place incoming off-screen in the correct direction, no transition
+                incoming.style.transition = 'none';
+                incoming.style.opacity = '0';
+                incoming.style.transform = direction > 0 ? 'translateX(100%)' : 'translateX(-100%)';
+
+                // Force reflow so the starting position is applied before animating
+                incoming.offsetHeight;
+
+                // Slide both cards simultaneously
+                const t = 'transform 0.5s ease, opacity 0.5s ease';
+                outgoing.style.transition = t;
+                outgoing.style.transform = direction > 0 ? 'translateX(-100%)' : 'translateX(100%)';
+                outgoing.style.opacity = '0';
+
+                incoming.style.transition = t;
+                incoming.style.transform = 'translateX(0)';
+                incoming.style.opacity = '1';
+                incoming.classList.add('active');
+
+                setTimeout(() => {
+                    outgoing.classList.remove('active');
+                    outgoing.style.transition = 'none';
+                    current = next;
+                    transitioning = false;
+                }, 500);
             }
 
-            prevBtn.addEventListener('click', () => { goTo(current - 1); resetAutoPlay(); });
-            nextBtn.addEventListener('click', () => { goTo(current + 1); resetAutoPlay(); });
-            dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetAutoPlay(); }));
+            prevBtn.addEventListener('click', () => {
+                goTo((current - 1 + total) % total, -1);
+                resetAutoPlay();
+            });
+            nextBtn.addEventListener('click', () => {
+                goTo((current + 1) % total, 1);
+                resetAutoPlay();
+            });
 
             function resetAutoPlay() {
                 clearInterval(autoPlay);
-                autoPlay = setInterval(() => goTo(current + 1), 5000);
+                autoPlay = setInterval(() => goTo((current + 1) % total, 1), 5000);
             }
 
             resetAutoPlay();
