@@ -309,7 +309,13 @@
 
         .testimonial-card.active {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateX(0) scale(1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .testimonial-card.active:hover {
+            transform: translateX(0) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.13);
         }
 
         .testimonial-text {
@@ -691,9 +697,16 @@
             let transitioning = false;
             let autoPlay;
 
-            // Show first card immediately (no animation)
+            // Show first card immediately (no animation), then clear inline styles
             cards[0].style.transition = 'none';
+            cards[0].style.transform = 'translateX(0)';
+            cards[0].style.opacity = '1';
             cards[0].classList.add('active');
+            setTimeout(() => {
+                cards[0].style.transition = '';
+                cards[0].style.transform = '';
+                cards[0].style.opacity = '';
+            }, 50);
 
             function goTo(next, direction) {
                 if (transitioning) return;
@@ -724,10 +737,16 @@
                 setTimeout(() => {
                     outgoing.classList.remove('active');
                     outgoing.style.transition = 'none';
+                    // Clear inline styles so CSS classes control hover again
+                    incoming.style.transition = '';
+                    incoming.style.transform = '';
+                    incoming.style.opacity = '';
                     current = next;
                     transitioning = false;
                 }, 500);
             }
+
+            const wrapper = document.querySelector('.carousel-wrapper');
 
             prevBtn.addEventListener('click', () => {
                 goTo((current - 1 + total) % total, -1);
@@ -737,6 +756,9 @@
                 goTo((current + 1) % total, 1);
                 resetAutoPlay();
             });
+
+            wrapper.addEventListener('mouseenter', () => clearInterval(autoPlay));
+            wrapper.addEventListener('mouseleave', () => resetAutoPlay());
 
             function resetAutoPlay() {
                 clearInterval(autoPlay);
